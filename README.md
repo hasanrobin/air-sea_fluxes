@@ -34,3 +34,33 @@ Input datasets are not included in this repository due to size and/or data polic
 - README.md 
 - LICENSE # License information
 - .gitignore # Ignored files and directories
+
+##  Usage of air-sea flux scripts 
+The scripts_py contains all python scripts to compute air-sea heat fluxes. 
+
+A) To compute sensible heat flux, latent heat flux, and longwave radiation, use the Main_flux.py script. 
+The script netCDF_write.py is used internally to create year-wise NetCDF output files
+
+Required Parameters :
+- start_year : Start year of computation (e.g., 2006)
+- end_year : End year of computation (e.g., 2020)
+- target_model_dataset : Input dataset (ecmwf, era5 or modify for another dataset)
+- flux_var : Flux component to compute, use any target flux variable - sensible, latent, longwave
+- output_dir : Directory where output NetCDF files will be saved
+
+Example usage : 
+
+    python Main_flux.py <start_year> <end_year> <target_model_dataset> <flux_var> <output_dir>
+    or 
+    python Main_flux.py 2006 2020  ecmwf sensible  'out/dir'
+
+B) To compute shortwave radiation, use the SWV_main.py script 
+
+Example usage : 
+
+    python Main_flux.py <start_year> <end_year> <target_model_dataset>  <output_dir>
+    or
+    python Main_flux.py 2006 2020 era5 'output/dir' 
+
+    
+
